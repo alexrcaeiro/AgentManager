@@ -1,0 +1,12 @@
+version: "3"
+services:
+  database:
+    image: "postgres:13.4"
+    container_name: "kogitodb"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: hibernate
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./init-db/initialize-db.sql:/docker-entrypoint-initdb.d/init.sql

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_xXdgcKCeEDqKqPUSGtKgkA" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_agentItem" structureRef="org.home.agent.Agent"/>
+  <bpmn2:itemDefinition id="__EE8EC599-7AA3-43A5-8060-77B2CCB2A185_agentInputXItem" structureRef="org.home.agent.Agent"/>
+  <bpmn2:interface id="_EE8EC599-7AA3-43A5-8060-77B2CCB2A185_ServiceInterface" name="org.home.agent.resource.UserManagementResource" implementationRef="org.home.agent.resource.UserManagementResource">
+    <bpmn2:operation id="_EE8EC599-7AA3-43A5-8060-77B2CCB2A185_ServiceOperation" name="saveAgent" implementationRef="saveAgent"/>
+  </bpmn2:interface>
+  <bpmn2:process id="SaveAgent" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="SaveAgent" isExecutable="true" processType="Public">
+    <bpmn2:extensionElements>
+      <drools:import name="org.home.agent.Agent"/>
+    </bpmn2:extensionElements>
+    <bpmn2:property id="agent" itemSubjectRef="_agentItem" name="agent">
+      <bpmn2:extensionElements>
+        <drools:metaData name="customTags">
+          <drools:metaValue><![CDATA[input]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:property>
+    <bpmn2:sequenceFlow id="_50B466E4-56E6-421E-B417-21A1B1764133" sourceRef="_EE8EC599-7AA3-43A5-8060-77B2CCB2A185" targetRef="_889D29D9-C9F2-42D1-B80F-484E554D7140">
+      <bpmn2:extensionElements>
+        <drools:metaData name="isAutoConnection.target">
+          <drools:metaValue><![CDATA[true]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_B71F5D09-811A-4A68-9E28-F91A3E6826DC" sourceRef="_C0C3E46E-A9D3-4C99-9DFF-10EB35439BAD" targetRef="_EE8EC599-7AA3-43A5-8060-77B2CCB2A185"/>
+    <bpmn2:sequenceFlow id="_824798A0-A7F2-4D37-8672-FCC99E5FB6F3" sourceRef="_DE985396-A632-45C2-922D-FC458A5444F5" targetRef="_C0C3E46E-A9D3-4C99-9DFF-10EB35439BAD"/>
+    <bpmn2:endEvent id="_889D29D9-C9F2-42D1-B80F-484E554D7140">
+      <bpmn2:incoming>_50B466E4-56E6-421E-B417-21A1B1764133</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:serviceTask id="_EE8EC599-7AA3-43A5-8060-77B2CCB2A185" drools:serviceimplementation="Java" drools:serviceinterface="org.home.agent.resource.UserManagementResource" drools:serviceoperation="saveAgent" name="SaveUser" implementation="Java" operationRef="_EE8EC599-7AA3-43A5-8060-77B2CCB2A185_ServiceOperation">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[SaveUser]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_B71F5D09-811A-4A68-9E28-F91A3E6826DC</bpmn2:incoming>
+      <bpmn2:outgoing>_50B466E4-56E6-421E-B417-21A1B1764133</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="_EE8EC599-7AA3-43A5-8060-77B2CCB2A185_agentInputX" drools:dtype="org.home.agent.Agent" itemSubjectRef="__EE8EC599-7AA3-43A5-8060-77B2CCB2A185_agentInputXItem" name="agent"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>_EE8EC599-7AA3-43A5-8060-77B2CCB2A185_agentInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:sourceRef>agent</bpmn2:sourceRef>
+        <bpmn2:targetRef>_EE8EC599-7AA3-43A5-8060-77B2CCB2A185_agentInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:serviceTask>
+    <bpmn2:scriptTask id="_C0C3E46E-A9D3-4C99-9DFF-10EB35439BAD" name="Change country" scriptFormat="http://www.java.com/java">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Change country]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_824798A0-A7F2-4D37-8672-FCC99E5FB6F3</bpmn2:incoming>
+      <bpmn2:outgoing>_B71F5D09-811A-4A68-9E28-F91A3E6826DC</bpmn2:outgoing>
+      <bpmn2:script>agent.setCountry("portugal");</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:startEvent id="_DE985396-A632-45C2-922D-FC458A5444F5">
+      <bpmn2:outgoing>_824798A0-A7F2-4D37-8672-FCC99E5FB6F3</bpmn2:outgoing>
+    </bpmn2:startEvent>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="SaveAgent">
+      <bpmndi:BPMNShape id="shape__DE985396-A632-45C2-922D-FC458A5444F5" bpmnElement="_DE985396-A632-45C2-922D-FC458A5444F5">
+        <dc:Bounds height="56" width="56" x="310" y="379"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__C0C3E46E-A9D3-4C99-9DFF-10EB35439BAD" bpmnElement="_C0C3E46E-A9D3-4C99-9DFF-10EB35439BAD">
+        <dc:Bounds height="102" width="154" x="446" y="356"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__EE8EC599-7AA3-43A5-8060-77B2CCB2A185" bpmnElement="_EE8EC599-7AA3-43A5-8060-77B2CCB2A185">
+        <dc:Bounds height="102" width="154" x="680" y="356"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__889D29D9-C9F2-42D1-B80F-484E554D7140" bpmnElement="_889D29D9-C9F2-42D1-B80F-484E554D7140">
+        <dc:Bounds height="56" width="56" x="914" y="379"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape__DE985396-A632-45C2-922D-FC458A5444F5_to_shape__C0C3E46E-A9D3-4C99-9DFF-10EB35439BAD" bpmnElement="_824798A0-A7F2-4D37-8672-FCC99E5FB6F3">
+        <di:waypoint x="338" y="407"/>
+        <di:waypoint x="523" y="407"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__C0C3E46E-A9D3-4C99-9DFF-10EB35439BAD_to_shape__EE8EC599-7AA3-43A5-8060-77B2CCB2A185" bpmnElement="_B71F5D09-811A-4A68-9E28-F91A3E6826DC">
+        <di:waypoint x="523" y="407"/>
+        <di:waypoint x="757" y="407"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__EE8EC599-7AA3-43A5-8060-77B2CCB2A185_to_shape__889D29D9-C9F2-42D1-B80F-484E554D7140" bpmnElement="_50B466E4-56E6-421E-B417-21A1B1764133">
+        <di:waypoint x="757" y="407"/>
+        <di:waypoint x="991" y="379"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters/>
+          <bpsim:ElementParameters elementRef="_DE985396-A632-45C2-922D-FC458A5444F5">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_C0C3E46E-A9D3-4C99-9DFF-10EB35439BAD">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="_EE8EC599-7AA3-43A5-8060-77B2CCB2A185">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_xXdgcKCeEDqKqPUSGtKgkA</bpmn2:source>
+    <bpmn2:target>_xXdgcKCeEDqKqPUSGtKgkA</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>
